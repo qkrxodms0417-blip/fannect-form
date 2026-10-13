@@ -132,7 +132,7 @@ h2{font-size:24px;letter-spacing:-.025em;margin:0 0 22px;
 .field{display:flex;flex-direction:column;gap:7px;min-width:0}
 label{font-size:13.5px;letter-spacing:-.01em}
 .req{color:var(--violet)}
-input[type=text],input[type=tel],input[type=email],select{
+input[type=text],input[type=tel],input[type=email],select,textarea{
   font:inherit;font-size:15px;color:var(--ink);background:#FCFAFD;
   border:1px solid var(--line);border-radius:11px;padding:12px 13px;width:100%;min-width:0}
 select{appearance:none;background-image:
@@ -140,7 +140,9 @@ select{appearance:none;background-image:
   linear-gradient(135deg,var(--violet) 50%,transparent 50%);
   background-position:calc(100% - 20px) 55%,calc(100% - 14px) 55%;
   background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:40px}
-input:focus-visible,select:focus-visible,button:focus-visible,.check:focus-within{
+textarea{resize:vertical;min-height:96px;line-height:1.5}
+.opt{color:var(--ink-soft);font-size:12.5px}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,.check:focus-within{
   outline:2.5px solid var(--violet);outline-offset:2px}
 .check{display:flex;gap:11px;align-items:flex-start;background:rgba(251,247,254,.88);
   border:1px solid var(--line);border-radius:12px;padding:14px 15px;cursor:pointer}
@@ -280,7 +282,10 @@ input:focus-visible,select:focus-visible,button:focus-visible,.check:focus-withi
               <option>데뷔 스포트라이트 패키지</option>
               <option>컴백 테이크오버</option>
               <option>올스테이지</option>
+              <option value="__etc">기타 (직접 입력)</option>
             </select>
+            <input type="text" id="etc26q4" name="pkgEtc26q4" aria-label="희망 팬덤 패키지 직접 입력"
+                   placeholder="원하시는 패키지·구성을 입력해 주세요" hidden>
           </div>
         </div>
       </div>
@@ -303,9 +308,36 @@ input:focus-visible,select:focus-visible,button:focus-visible,.check:focus-withi
               <option>데뷔 스포트라이트 패키지</option>
               <option>컴백 테이크오버</option>
               <option>올스테이지</option>
+              <option value="__etc">기타 (직접 입력)</option>
             </select>
+            <input type="text" id="etc27q1" name="pkgEtc27q1" aria-label="희망 팬덤 패키지 직접 입력"
+                   placeholder="원하시는 패키지·구성을 입력해 주세요" hidden>
           </div>
         </div>
+      </div>
+
+      <div class="reveal">
+        <div class="field">
+          <label for="schAny">광고 진행 희망 일정 <span class="opt">(시기 무관)</span></label>
+          <input type="text" id="schAny" name="scheduleAny" placeholder="예: 2027년 하반기, 데뷔 시점 등 시기와 관계없이 자유롭게">
+        </div>
+        <div class="field">
+          <label for="pkgAny">희망 팬덤 패키지</label>
+          <select id="pkgAny" name="pkgAny">
+            <option value="">선택해 주세요</option>
+            <option>데뷔 스포트라이트 패키지</option>
+            <option>컴백 테이크오버</option>
+            <option>올스테이지</option>
+            <option value="__etc">기타 (직접 입력)</option>
+          </select>
+          <input type="text" id="etcAny" name="pkgEtcAny" aria-label="희망 팬덤 패키지 직접 입력"
+                 placeholder="원하시는 패키지·구성을 입력해 주세요" hidden>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="collab">네이버와 협업하고 싶은 서비스/광고 영역이 있다면 자유롭게 기재해주세요 <span class="opt">(선택)</span></label>
+        <textarea id="collab" name="collab" rows="4"></textarea>
       </div>
 
       <button class="submit" id="submitBtn" type="submit">제출하기</button>
@@ -322,7 +354,7 @@ input:focus-visible,select:focus-visible,button:focus-visible,.check:focus-withi
       <div class="scrollx"><table id="tbl">
         <thead><tr><th>시각</th><th>회사명</th><th>아티스트</th><th>성함</th><th>직함</th>
           <th>연락처</th><th>이메일</th><th>26년4분기</th><th>일정</th><th>패키지</th>
-          <th>27년1분기</th><th>일정</th><th>패키지</th></tr></thead>
+          <th>27년1분기</th><th>일정</th><th>패키지</th><th>희망일정(시기무관)</th><th>패키지(시기무관)</th><th>협업희망영역</th></tr></thead>
         <tbody></tbody></table></div>
     </div>
 
@@ -353,7 +385,7 @@ input:focus-visible,select:focus-visible,button:focus-visible,.check:focus-withi
       <small>네이버 DOOH 사업/운영 김채은 매니저</small></div></div>
     <div class="row"><b>16:25–16:40</b><div><span class="tag">SESSION 5.</span>
       <p>NAVER X ENTERTAINMENT : 엔터 콘텐츠의 새로운 가능성</p>
-      <small>네이버 엔터/콘텐츠 주건범 상무</small></div></div>
+      <small>네이버 엔터/콘텐츠 장연주 리더</small></div></div>
     <div class="row"><b>16:40–16:55</b><div><p>QUIZ &amp; LUCKY DRAW</p></div></div>
     <div class="row"><b>16:55–17:00</b><div><p>CLOSING</p></div></div>
   </div>
@@ -379,15 +411,34 @@ input:focus-visible,select:focus-visible,button:focus-visible,.check:focus-withi
     q.box = document.getElementById('rv' + q.key);
     q.sch = document.getElementById('sch' + q.key);
     q.pkg = document.getElementById('pkg' + q.key);
+    q.etc = document.getElementById('etc' + q.key);
     return q;
   });
 
+  var ANY = { label: '시기 무관', cb: { checked: true },
+              sch: document.getElementById('schAny'),
+              pkg: document.getElementById('pkgAny'),
+              etc: document.getElementById('etcAny') };
+
   function syncReveal() {
+    ANY.etc.hidden = ANY.pkg.value !== '__etc';
     QUARTERS.forEach(function (q) {
       q.box.hidden = !q.cb.checked;
       q.cb.setAttribute('aria-expanded', q.cb.checked ? 'true' : 'false');
+      q.etc.hidden = q.pkg.value !== '__etc';
     });
   }
+  // 희망 팬덤 패키지: '기타'를 고르면 직접 입력란을 연다
+  function pkgValue(q) {
+    if (!q.cb.checked) return '';
+    return q.pkg.value === '__etc' ? '기타: ' + q.etc.value.trim() : q.pkg.value;
+  }
+  QUARTERS.concat([ANY]).forEach(function (q) {
+    q.pkg.addEventListener('change', function () {
+      syncReveal();
+      if (q.pkg.value === '__etc') q.etc.focus();
+    });
+  });
   QUARTERS.forEach(function (q) { q.cb.addEventListener('change', syncReveal); });
   syncReveal();
 
@@ -424,10 +475,13 @@ input:focus-visible,select:focus-visible,button:focus-visible,.check:focus-withi
       email: form.email.value.trim(),
       comeback26q4: QUARTERS[0].cb.checked,
       schedule26q4: QUARTERS[0].cb.checked ? QUARTERS[0].sch.value.trim() : '',
-      pkg26q4: QUARTERS[0].cb.checked ? QUARTERS[0].pkg.value : '',
+      pkg26q4: pkgValue(QUARTERS[0]),
       comeback27q1: QUARTERS[1].cb.checked,
       schedule27q1: QUARTERS[1].cb.checked ? QUARTERS[1].sch.value.trim() : '',
-      pkg27q1: QUARTERS[1].cb.checked ? QUARTERS[1].pkg.value : '',
+      pkg27q1: pkgValue(QUARTERS[1]),
+      scheduleAny: ANY.sch.value.trim(),
+      pkgAny: pkgValue(ANY),
+      collab: form.collab.value.trim(),
       submittedAt: new Date().toISOString()
     };
   }
@@ -444,7 +498,9 @@ input:focus-visible,select:focus-visible,button:focus-visible,.check:focus-withi
       if (!q.cb.checked) continue;
       if (!q.sch.value.trim()) return q.label + ' 광고 진행 희망 일정을 입력해 주세요.';
       if (!q.pkg.value) return q.label + ' 희망 팬덤 패키지를 선택해 주세요.';
+      if (q.pkg.value === '__etc' && !q.etc.value.trim()) return q.label + ' 희망 팬덤 패키지를 직접 입력해 주세요.';
     }
+    if (ANY.pkg.value === '__etc' && !ANY.etc.value.trim()) return '시기 무관 희망 팬덤 패키지를 직접 입력해 주세요.';
     return null;
   }
 
@@ -515,7 +571,8 @@ input:focus-visible,select:focus-visible,button:focus-visible,.check:focus-withi
   var adminEl = document.getElementById('admin');
   var HEAD = ['제출시각(KST)', '회사명', '담당아티스트명', '성함', '직함', '연락처', '이메일',
               '26년4분기컴백', '26년4분기희망일정', '26년4분기희망패키지',
-              '27년1분기컴백', '27년1분기희망일정', '27년1분기희망패키지'];
+              '27년1분기컴백', '27년1분기희망일정', '27년1분기희망패키지',
+              '희망일정(시기무관)', '희망패키지(시기무관)', '협업희망영역'];
   function kst(iso) {
     if (!iso) return '';
     try { return new Date(iso).toLocaleString('sv-SE', { timeZone: 'Asia/Seoul' }).slice(0, 16); }
@@ -524,7 +581,8 @@ input:focus-visible,select:focus-visible,button:focus-visible,.check:focus-withi
   function toRow(r) {
     return [kst(r.submittedAt), r.company, r.artist, r.name, r.title, r.phone, r.email,
             r.comeback26q4 ? 'O' : '', r.schedule26q4, r.pkg26q4,
-            r.comeback27q1 ? 'O' : '', r.schedule27q1, r.pkg27q1];
+            r.comeback27q1 ? 'O' : '', r.schedule27q1, r.pkg27q1,
+            r.scheduleAny, r.pkgAny, r.collab];
   }
   function renderAdmin() {
     var rows = load();
